@@ -1,0 +1,1 @@
+{"description":"One-line comeback from the office printer to the jams, error codes and thumps, for make.fun","license":"MIT","name":"makefun-printer-answers-20261126","private":true,"scripts":{"start":"node main.ts","test":"node --test main.test.ts"},"type":"module","version":"1.0.0"}
