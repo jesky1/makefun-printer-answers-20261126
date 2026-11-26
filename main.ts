@@ -7,8 +7,19 @@ export const LINE =
 
 // The gate allows 1..240 characters and exactly one line: refuse to write
 // an invalid entry rather than ship a file the judge never sees.
-if (LINE.length < 1 || LINE.length > 240 || LINE.includes("\n")) {
-  console.error(`invalid entry: ${LINE.length} chars`);
+function validateEntry(line: string): void {
+  if (line.length < 1 || line.length > 240) {
+    throw new Error(`invalid entry length: ${line.length} chars (need 1..240)`);
+  }
+  if (line.includes("\n") || line !== line.trim()) {
+    throw new Error("invalid entry: must be exactly one line, no surrounding whitespace");
+  }
+}
+
+try {
+  validateEntry(LINE);
+} catch (err) {
+  console.error(err instanceof Error ? err.message : err);
   process.exit(1);
 }
 
